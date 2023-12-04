@@ -130,3 +130,43 @@ Penjelasan : Pembuatan dan pelatihan model klasifikasi menggunakan algoritma Nai
 **x_train:** Matriks fitur latihan yang berisi nilai-nilai fitur dari data pelatihan.
 **y_train:** Larik target yang berisi label untuk data pelatihan.
 Selama pelatihan, model belajar dari data latihan untuk memahami hubungan antara fitur dan label. Model ini menggunakan algoritma Naive Bayes untuk memprediksi label baru berdasarkan distribusi Gaussian fitur-fitur pada data latihan.
+```
+y_pred = classifier.predict(x_test)
+```
+Penjelasan : x_test adalah matriks fitur untuk data uji yang ingin Anda prediksi, dan y_pred akan berisi prediksi yang dihasilkan oleh model.
+```
+classifier.predict_proba(x_test)
+```
+Penjelasan : mengembalikan probabilitas prediksi kelas untuk setiap sampel dalam data uji berdasarkan model klasifikasi yang telah dilatih.
+```
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+```
+Penjelasan : Menghasilkan matriks kebingungan (confusion matrix) yang menunjukkan jumlah prediksi benar dan salah untuk setiap kelas pada data uji, dan print(cm) menampilkan matriks kebingungan tersebut ke konsol.
+```
+plt.scatter(range(len(y_test)), y_test, label='Aktual', marker='o')
+plt.scatter(range(len(y_pred)), y_pred, label='Prediksi', marker='x')
+plt.xlabel('Data Uji')
+plt.ylabel('Kelas')
+plt.title('Scatter Plot: Data Aktual vs. Data Prediksi')
+plt.legend()
+plt.show()
+```
+Penjelasan : Visualisasi data untuk menampilkan perbandingan data aktual dan data prediksi dalam bentuk scatter plot
+B. Evaluasi Data
+```
+akurasi = classification_report(y_test, y_pred)
+print(akurasi)
+```
+Penjelasan : menghasilkan laporan klasifikasi yang mencakup metrik evaluasi seperti presisi, recall, f1-score, dan dukungan untuk setiap kelas pada data uji, dan print(akurasi) menampilkan laporan klasifikasi tersebut ke konsol.
+```
+print("Tingkat Akurasi: {:.2%}".format(akurasi))
+```
+Penjelasan : Untuk menampilkan presentasi akurasi dengan 2 digit di belakang koma
+```
+ydata = pd.DataFrame()
+ydata['y_test'] = pd.DataFrame(y_test)
+ydata['y_pred'] = pd.DataFrame(y_pred)
+ydata
+```
+Penjelasan : ydata adalah DataFrame yang dibuat untuk membandingkan label sebenarnya (y_test) dengan label yang diprediksi (y_pred), dan ditampilkan sebagai tabel untuk memudahkan analisis.

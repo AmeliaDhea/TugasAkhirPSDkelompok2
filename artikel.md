@@ -117,3 +117,16 @@ x_train = sc.fit_transform(x_train)
 x_test = sc.transform(x_test)
 ```
 Penjelasan : Melakukan standarisasi fitur
+### Capstone 5
+#### Modeling & Evaluasi
+A. Data Modeling
+```
+classifier = GaussianNB()
+classifier.fit(x_train,y_train)
+```
+Penjelasan : Pembuatan dan pelatihan model klasifikasi menggunakan algoritma Naive Bayes dengan distribusi Gaussian. Mari kita bahas langkah-langkahnya:
+**classifier = GaussianNB():** Baris ini membuat objek klasifikasi menggunakan kelas GaussianNB dari pustaka scikit-learn. GaussianNB merujuk pada algoritma klasifikasi Naive Bayes dengan asumsi bahwa fitur-fiturnya memiliki distribusi Gaussian (normal).
+**classifier.fit(x_train, y_train):** Baris ini melakukan pelatihan model menggunakan metode fit. Metode ini mengambil dua parameter:
+**x_train:** Matriks fitur latihan yang berisi nilai-nilai fitur dari data pelatihan.
+**y_train:** Larik target yang berisi label untuk data pelatihan.
+Selama pelatihan, model belajar dari data latihan untuk memahami hubungan antara fitur dan label. Model ini menggunakan algoritma Naive Bayes untuk memprediksi label baru berdasarkan distribusi Gaussian fitur-fitur pada data latihan.

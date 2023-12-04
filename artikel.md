@@ -90,4 +90,30 @@ B. Data Preparation
 ```
 dataset.dropna(inplace=True)
 ```
-Penjelasan : 
+Penjelasan : Menghapus nilai dari baris yang kosong
+```
+dataset.empty
+```
+Penjelasan : Mengecek apakah ada data yang kosong
+```
+en = LabelEncoder()
+
+dataset['Class'] = en.fit_transform(dataset['Class'])
+dataset.head()
+```
+Penjelasan : Menggunakan LabelEncoder untuk mengubah data kategorikal menjadi numerik
+```
+x = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, -1].values
+```
+Penjelasan : Memisahkan fitur dan target
+```
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=123)
+```
+Penjelasan : Membagi data latih dan data uji
+```
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+```
+Penjelasan : Melakukan standarisasi fitur

@@ -85,7 +85,37 @@ A. Data Understanding
 - "Class":
     - Deskripsi: Kelas aktual dari mahasiswa, yaitu kelas yang seharusnya didapatkan berdasarkan kriteria penilaian.
    - Tipe data: String 
-    - Kelas yang mungkin: "G" (Good) atau "F" (Fail), atau “W” (Weak) 
+    - Kelas yang mungkin: "G" (Good) atau "F" (Fail), atau “W” (Weak)
+**Exploratory Data Analysis (EDA)**
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+Penjelasan : import pandas as pd untuk import library Pandas, yang merupakan library untuk manipulasi dan analisis data.
+import matplotlib.pyplot as plt untuk import library Matplotlib, yang merupakan library untuk visualisasi data.
+import seaborn as sns untuk import library Seaborn, yang merupakan library untuk visualisasi data yang lebih kompleks.
+```
+dataset = pd.read_excel('grade.xlsx')
+dataset.head()
+```
+Penjelasan : Untuk membaca data dan menampilkan data 5 baris yang paling atas
+```
+dataset.columns
+```
+Penjelasan : Menampilkan kolom yang ada pada data
+```
+dataset.info()
+```
+Penjelasan : Digunakan untuk menampilkan ringkasan informasi tentang struktur dan data dari DataFrame dataset. Informasi yang ditampilkan meliputi jumlah kolom, nama kolom, tipe data, jumlah nilai non-null. dan penggunaan memori.
+```
+print(dataset.describe())
+```
+Penjelasan : Digunakan untuk menampilkan ringkasan statistik deskriptif untuk setiap kolom numerik dalam DataFrame dataset. Ringkasan meliputi jumlah, mean, median, modus, standar deviasi, min, dan max.
+```
+dataset.Class.value_counts("G, F, W")
+```
+Penjelasan : Kode ini menghitung berapa kali setiap nilai "G", "F", dan "W" muncul dalam kolom "Class" pada DataFrame dataset.
 B. Data Preparation
 ```
 dataset.dropna(inplace=True)

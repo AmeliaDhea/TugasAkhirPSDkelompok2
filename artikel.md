@@ -116,6 +116,19 @@ Penjelasan : Digunakan untuk menampilkan ringkasan statistik deskriptif untuk se
 dataset.Class.value_counts("G, F, W")
 ```
 Penjelasan : Kode ini menghitung berapa kali setiap nilai "G", "F", dan "W" muncul dalam kolom "Class" pada DataFrame dataset.
+**Insight-insight yang didapatkan dalam proses EDA**
+86% siswa mendapatkan label class G. 
+12% siswa mendapatkan label class F. 
+0,2% siswa mendapatkan label class W. 
+Rata-rata nilai kuis satu 78 dengan std 14. 
+Rata-rata nilai Assignment (01) 75 dengan std 18. 
+Rata-rata nilai Midterm exam 77 dengan std 12.
+Rata -rata nilai Assignment (02) 77 dengan std 15. 
+Rata -rata nilai Assignment (03) 81 dengan std 13. 
+Rata-rata final exam 62 dengan std 13. 
+Rata-rata Course Grade 80 dengan std 11. 
+Rata-rata total 80 dengan std 11. 
+
 B. Data Preparation
 ```
 dataset.dropna(inplace=True)
@@ -137,6 +150,10 @@ x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
 Penjelasan : Memisahkan fitur dan target
+
+### Capstone 5
+#### Modeling & Evaluasi
+A. Data Modeling
 ```
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=123)
 ```
@@ -147,14 +164,11 @@ x_train = sc.fit_transform(x_train)
 x_test = sc.transform(x_test)
 ```
 Penjelasan : Melakukan standarisasi fitur
-### Capstone 5
-#### Modeling & Evaluasi
-A. Data Modeling
 ```
 classifier = GaussianNB()
 classifier.fit(x_train,y_train)
 ```
-Penjelasan : Pembuatan dan pelatihan model klasifikasi menggunakan algoritma Naive Bayes dengan distribusi Gaussian. Mari kita bahas langkah-langkahnya:
+Penjelasan : Pembuatan dan pelatihan model klasifikasi menggunakan algoritma Naive Bayes dengan distribusi Gaussian. Berikut detail angkah-langkahnya:
 **classifier = GaussianNB():** Baris ini membuat objek klasifikasi menggunakan kelas GaussianNB dari pustaka scikit-learn. GaussianNB merujuk pada algoritma klasifikasi Naive Bayes dengan asumsi bahwa fitur-fiturnya memiliki distribusi Gaussian (normal).
 **classifier.fit(x_train, y_train):** Baris ini melakukan pelatihan model menggunakan metode fit. Metode ini mengambil dua parameter:
 **x_train:** Matriks fitur latihan yang berisi nilai-nilai fitur dari data pelatihan.
@@ -168,6 +182,7 @@ Penjelasan : x_test adalah matriks fitur untuk data uji yang ingin Anda prediksi
 classifier.predict_proba(x_test)
 ```
 Penjelasan : mengembalikan probabilitas prediksi kelas untuk setiap sampel dalam data uji berdasarkan model klasifikasi yang telah dilatih.
+B. Evaluasi Data
 ```
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
@@ -183,7 +198,6 @@ plt.legend()
 plt.show()
 ```
 Penjelasan : Visualisasi data untuk menampilkan perbandingan data aktual dan data prediksi dalam bentuk scatter plot
-B. Evaluasi Data
 ```
 akurasi = classification_report(y_test, y_pred)
 print(akurasi)
